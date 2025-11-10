@@ -1,115 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta
-      name="description"
-      content="our first interactive multimedia narrative"
-    />
-    <link
-      id="favicon"
-      rel="icon"
-      href="https://glitch.com/edit/favicon-app.ico"
-      type="image/x-icon"
-    />
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La mujer corrompida — Home + Capítulos</title>
+  <style>
+    :root{
+      --bg-1:#0d1117;            /* fondo profundo */
+      --bg-2:#1c2230;            /* panel */
+      --ink:#e8e8ee;             /* texto */
+      --ink-d:#b9c0cf;           /* texto suave */
+      --accent:#d7b08c;          /* botones */
+      --accent-2:#a57d5e;        /* hover */
+      --muted:#2a3142;           /* bordes suaves */
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
 
-    <link
-      rel="stylesheet"
-      href="
-style.css"
-    />
-    <script
-      src=".
-/script.js"
-      defer
-    ></script>
-  </head>
+    html,body{height:100%;}
+    body{
+      margin:0; color:var(--ink); background: radial-gradient(1200px 800px at 50% -10%, #1b2130 0%, #111622 45%, var(--bg-1) 100%);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.6; letter-spacing:.2px;
+    }
 
-  <body>
-    <header>
-      <ul>
-        <li><a href="Parrafos.html">Párrafos</a></li>
-        <li>
-          <a
-            href="
-Imagenes.html"
-            >Imágenes</a
-          >
-        </li>
-        <li>
-          <a
-            href="
-Imagencomofondo.html"
-            >Imagen como Fondo</a
-          >
-        </li>
-        <li>
-          <a
-            href="
-Links.html"
-            >Links</a
-          >
-        </li>
-        <li>
-          <a
-            href="
-Infografías, storymaps, carruseles.html"
-            >Infografías, storymaps, carruseles
-          </a>
-        </li>
-        <li>
-          <a
-            href="
-Videosyoutube.html"
-            >Videos (YouTube)</a
-          >
-        </li>
+    /* ====== Header / Nav ====== */
+    header{
+      position:sticky; top:0; z-index:10;
+      background: linear-gradient(to bottom, rgba(3,6,12,.9), rgba(3,6,12,.65) 60%, transparent 100%);
+      backdrop-filter:saturate(120%) blur(8px);
+    }
+    .bar{max-width:1180px;margin:0 auto; padding:20px clamp(16px, 5vw, 28px) 12px; display:flex; align-items:center; gap:20px}
+    .title{font-variant: small-caps; font-weight:700; letter-spacing:.6px;}
+    .spacer{flex:1}
+    nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0}
+    nav a{color:var(--ink-d); text-decoration:none; font-weight:600; padding:6px 8px; border-radius:10px; border:1px solid transparent}
+    nav a:hover{color:var(--ink); border-color:var(--muted)}
 
-        <li>
-          <a
-            href="
-Botones.html"
-            >Botones</a
-          >
-        </li>
+    /* ====== Generic panel ====== */
+    .panel{
+      max-width:1180px; margin:24px auto; padding: clamp(18px, 3.5vw, 30px);
+      background: linear-gradient(180deg, #212a3b, #1a2232 65%, #161c28);
+      border:1px solid #2a3346; border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .panel h2, .panel h3{margin: 0 0 16px 0; font-weight:700}
+    .muted{color:var(--ink-d)}
 
-        <li>
-          <a
-            href="
-Popups.html"
-          >
-            Pop Ups</a
-          >
-        </li>
-        <li>
-          <a
-            href="
-Pantalladividida.html"
-            >Pantalla Dividida</a
-          >
-        </li>
-        <li>
-          <a
-            href="
-Imagenconzonasclickeables.html"
-            >Imagen con Zonas Clickeables</a
-          >
-        </li>
-        <li>
-          <a
-            href="
-Audio.html"
-            >Audio</a
-          >
-        </li>
-      </ul>
-    </header>
+    /* ====== Layout helpers ====== */
+    .grid{
+      display:grid; gap: clamp(18px, 3vw, 28px);
+    }
+    /* two columns on wide screens */
+    @media (min-width: 980px){
+      .grid.cols-2{grid-template-columns: 1fr 1fr}
+    }
 
-   <!--  <main>
-      <p>Prueba: cambio para verificar commit y push.</p>
+    /* ====== Media blocks ====== */
+    .frame{background:#0e141f; border:1px solid #262e40; border-radius:16px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.04); overflow:hidden}
+    .frame img{display:block; width:100%; height:100%; object-fit:cover}
+    .frame.cap{aspect-ratio: 3/4;}  /* retrato alto */
+    .frame.land{aspect-ratio: 16/10;} /* apaisado */
+
+    /* ====== Buttons ====== */
+    .btn{
+      appearance:none; border:none; cursor:pointer; font-weight:700; letter-spacing:.4px;
+      color:#1d1510; background:var(--accent); padding:12px 22px; border-radius:999px; box-shadow: 0 2px 0 rgba(0,0,0,.2);
+    }
+    .btn:hover{background:var(--accent-2); color:#120c08}
+    .btn.ghost{background:transparent; color:var(--ink); border:1px solid #384055}
+
+    .lead{max-width:60ch}
+
+    .chip{display:inline-block; padding:6px 10px; border-radius:999px; background:#2a3244; color:var(--ink-d); font-size:.86rem; border:1px solid #384055}
+
+    footer{color:#8e97aa; text-align:center; font-size:.85rem; padding:40px 0;}
+
+    /* small helpers to mimic la maqueta */
+    .center{display:flex; justify-content:center}
+    .right{display:flex; justify-content:flex-end}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <div class="title">La mujer corrompida</div>
+      <div class="spacer"></div>
+      <nav aria-label="Capítulos">
+        <ul>
+          <li><a href="#home">home</a></li>
+          <li><a href="#cap1">1</a></li>
+          <li><a href="#cap2">2</a></li>
+          <li><a href="#cap3">3</a></li>
+          <li><span class="chip" title="Próximamente">4</span></li>
+          <li><span class="chip" title="Próximamente">5</span></li>
+          <li><span class="chip" title="Próximamente">6</span></li>
+          <li><span class="chip" title="Próximamente">7</span></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home" class="panel grid cols-2" aria-labelledby="home-title">
+    <div class="frame cap">
+      <!-- Reemplaza src por tu imagen principal del home -->
+      <img src="https://placehold.co/800x1060/0e141f/ffffff?text=OBRA+PRINCIPAL" alt="Obra principal — mujer desnuda en pose"/>
+    </div>
+
+    <div>
+      <h2 id="home-title">La mujer corrompida</h2>
+      <p class="lead muted">Lorem ipsum dolor sit amet consectetur. Tristique dapibus commodo pretium nulla aliquet sociis quisque risus gravida. Cras venenatis duis.</p>
+      <div style="height:18px"></div>
+      <button class="btn" type="button">BOTÓN</button>
+    </div>
+  </section>
+
+  <!-- ===================== CAPÍTULO 1 ===================== -->
+  <section id="cap1" class="panel" aria-labelledby="c1-title">
+    <h2 id="c1-title">Título</h2>
+    <div class="grid cols-2">
+      <div class="frame land">
+        <!-- Imagen del capítulo 1 -->
+        <img src="https://placehold.co/1100x680/111826/ffffff?text=CAP+1:+ESCRITORIO" alt="Escena: figura frente a computador"/>
+      </div>
+      <div>
+        <p class="muted">Habitas a erat augue ultricies dignissim viverra urna. Sed amet diam amet nisi nam tempor ac. At habitasse malesuada bibendum mi turpis. Amet duis lobortis duis id scelerisque at adipiscing habitant. Semper non tempus lectus cursus vel massa nisl nulla. Viverra aenean id vel odio sem semper nisi facilisis. Scelerisque lobortis sed venenatis adipiscing. Volutpat placerat mauris lectus. Elementum libero ornare odio accumsan augue eu fermentum eget. Sed convallis ac vulputate sem.</p>
+        <p class="muted">Viverra lorem neque lectus nisl. Lorem aliquam sit egestas at auctor. Ut est magna neque vulputate et cursus sed facilisi. Nibh neque odio feugiat euismod at diam natoque. Dapibus cum feugiat id tincidunt aliquam. Posuere tincidunt egestas faucibus malesuada. Tristique odio sapien platea fames tristique ornare. A duis sapien pro congue enim sed. Risus sed id adipiscing elit nisi viverra urna. Et feugiat.</p>
+        <div class="right"><button class="btn" type="button">BOTÓN</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CAPÍTULO 2 ===================== -->
+  <section id="cap2" class="panel" aria-labelledby="c2-title">
+    <h2 id="c2-title">Título</h2>
+    <p class="muted" style="max-width:68ch">Lorem ipsum dolor sit amet consectetur. Rhoncus nulla massa elit sollicitudin. Duis sed fermentum elementum quis feugiat nunc porta amet lorem. Odio mauris dolor eget quis. Mollis ornare aliquet ultrices a nisi suspendisse quam quis ipsum. Id tellus in tempor quis. Cursus justo massa dolor risus amet purus purus.</p>
+    <div class="grid">
+      <div class="frame land">
+        <!-- Imagen del capítulo 2 -->
+        <img src="https://placehold.co/1200x750/101622/ffffff?text=MONA:+ARTIFICIAL+INTELLIGENCE" alt="Póster MONA Artificial Intelligence"/>
+      </div>
+      <div class="center">
+        <button class="btn" type="button">BOTÓN</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CAPÍTULO 3 ===================== -->
+  <section id="cap3" class="panel" aria-labelledby="c3-title">
+    <h2 id="c3-title">Título</h2>
+    <div class="grid cols-2">
+      <div class="frame land">
+        <!-- Imagen del capítulo 3 -->
+        <img src="https://placehold.co/1000x640/0e141f/ffffff?text=CAP+3:+AUDIENCIA" alt="Cuadro con público y protagonista"/>
+      </div>
+      <div>
+        <p class="muted">Suspendisse sagittis purus placerat ac malesuada non. Consectetur ac duis ornare enim id libero nisi. Ullamcorper ultricies egestas nec nam hac dolor vitae enim. Mauris scelerisque non massa dictum congue. Integer a nec eu volutpat nisi. Cursus luctus quis enim felis mauris volutpat condimentum. Netus vitae quam a id facilisis semper. Nunc tellus at lectus nibh ullamcorper sed in elit risus. Aenean tincidunt lectus velit eget laoreet tempor.</p>
+        <p class="muted">Mauris scelerisque consectetur id. Facilisis in volutpat et quam sed blandit nibh augue et. Egestas eu feugiat. Magnis laoreet bibendum massa duis sed adipiscing posuere faucibus cum placerat. Tellus leo eu hendrerit velit nunc amet. Ultrices auctor malesuada id nunc. Tristique ultricies tempor lectus libero. Enim turpis egestas lacus consectetur volutpat a eu et.</p>
+        <div class="center"><button class="btn" type="button">BOTÓN</button></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="y"></span> — La mujer corrompida
+  </footer>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+o para verificar commit y push.</p>
     </main> -->
   </body>
 </html>
