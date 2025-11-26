@@ -47,20 +47,22 @@
     .big-button {
         background: #C19275;
         border-radius: 30px;
-        padding: 20px;
-        width: 100%;
-        max-width: 550px;
+        padding: 20px 40px;
+        max-width: 600px;
+        width: 90%;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-decoration: none;
+        margin: 60px auto 0;
     }
 
-    .big-button div {
+    .big-button-text {
         font-size: 36px;
         font-weight: 700;
         color: rgba(0,0,0,0.20);
-        line-height: 1.2;
         text-align: center;
+        line-height: 1.2;
     }
 
     /* --- RESPONSIVE --- */
@@ -71,7 +73,7 @@
         .text-block {
             font-size: 22px;
         }
-        .big-button div {
+        .big-button-text {
             font-size: 28px;
         }
     }
@@ -81,17 +83,20 @@
 
 <div class="container">
 
-    <h1>Tittle</h1>
+    <h1>Y entonces, se reanuda el ciclo</h1>
 
     <div class="text-block">
-        El internet, que alguna vez fue su herramienta, se convierte en un espejo roto que la refleja multiplicada, deformada, invadida.
+El internet, que alguna vez fue su herramienta, se convierte en un espejo roto que la refleja multiplicada, deformada, invadida.
 
 Vicky observa, impotente, cómo su identidad se fragmenta en millones de copias, tal como le ocurrió a Mona.
 En los comentarios, alguien escribe:
+    </div>
 
+    <!-- BOTÓN GRANDE CENTRADO -->
+    <a class="big-button" href="7.html">
+        <div class="big-button-text">
+            “Tal para cual. La creadora y su monstruo.”
+        </div>
+    </a>
 
-<a href="Vicky3.html">
-  <button class="section-button" style="background-color: #945353;">
-    “Tal para cual. La creadora y su monstruo.”
-  </button>
-</a>
+</div>
