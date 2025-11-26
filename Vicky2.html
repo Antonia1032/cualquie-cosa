@@ -47,20 +47,22 @@
     .big-button {
         background: #C19275;
         border-radius: 30px;
-        padding: 20px;
-        width: 100%;
-        max-width: 550px;
+        padding: 20px 40px;
+        max-width: 600px;
+        width: 90%;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-decoration: none;
+        margin: 60px auto 0;
     }
 
-    .big-button div {
+    .big-button-text {
         font-size: 36px;
         font-weight: 700;
         color: rgba(0,0,0,0.20);
-        line-height: 1.2;
         text-align: center;
+        line-height: 1.2;
     }
 
     /* --- RESPONSIVE --- */
@@ -71,7 +73,7 @@
         .text-block {
             font-size: 22px;
         }
-        .big-button div {
+        .big-button-text {
             font-size: 28px;
         }
     }
@@ -81,16 +83,19 @@
 
 <div class="container">
 
-    <h1>Tittle</h1>
+    <h1>Y entonces, se reanuda el ciclo</h1>
 
     <div class="text-block">
-        Primero, los memes.
+Primero, los memes.
 Luego, los videos manipulados.
 Deepfakes con su rostro diciendo frases ridículas. Entrevistas falsas. Escenas de películas adulteradas.
+    </div>
 
+    <!-- BOTÓN GRANDE CENTRADO -->
+    <a class="big-button" href="Vicky3.html">
+        <div class="big-button-text">
+            Finalmente, el horror: videos pornográficos con su cara, su cuerpo, su voz.
+        </div>
+    </a>
 
-<a href="Vicky3.html">
-  <button class="section-button" style="background-color: #945353;">
-    Finalmente, el horror: videos pornográficos con su cara, su cuerpo, su voz.
-  </button>
-</a>
+</div>
