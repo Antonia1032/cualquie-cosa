@@ -17,15 +17,66 @@
 <audio controls autoplay loop>
   <source src="song1.mp3" type="audio/mpeg">
 </audio>
-  <ul class="chapter-list">
-      <a href="index.html"><li>1</li></a> 
-      <a href="2.html"><li>2</li></a>
-      <a href="3.html"><li>3</li></a> 
-      <a href="4.html"><li>4</li></a> 
-      <a href="5.html"><li>5</li></a> 
-      <a href="6.html"><li>6</li></a> 
-  </ul>
+  <style>
+.dropdown {
+   right: 400px;
+}
 
+/* Style the dropdown button */
+.dropbtn {
+  background-color: #c19275;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  
+}
+
+/* Dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside dropdown content */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change background color of dropdown button on hover */
+.dropdown:hover .dropbtn {
+  background-color: #945353;
+}
+</style>
+<div class="dropdown">
+  <button class="dropbtn">Pasa de capítulo</button>
+  <div class="dropdown-content">
+  <a href="index.html">INICIO</a>
+  <a href="2.html">Cap 1</a>
+  <a href="3.html">Cap 2</a>
+  <a href="4.html">Cap 3</a>
+  <a href="5.html">Cap 4</a>
+  <a href="6.html">Cap 5</a>
+  </div>
+</div>
   <div class="mainimg">
     <img src="./assets/img1.jpeg" alt="" class="">
   </div>
