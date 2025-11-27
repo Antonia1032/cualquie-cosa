@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Quién es MONA</title>
+
 <style>
     body {
         margin: 0;
@@ -26,6 +32,10 @@
         font-size: 48px;
         font-weight: 700;
         margin-top: 40px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
         margin-bottom: 40px;
     }
 
@@ -35,97 +45,153 @@
         margin-bottom: 60px;
     }
 
-    .button-box {
-        width: 100%;
-        max-width: 500px;
-        margin: auto;
-        padding: 20px;
-        background: linear-gradient(0deg, rgba(0,0,0,0.20), rgba(0,0,0,0.20)), #A86865;
-        border-radius: 30px;
-        display: flex;
+    .img-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .img-button {
+        position: absolute;
+        transform: translateX(-50%);
+        padding: 12px;
+        background-color: #945353;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        height: 60px;
+        width: 60px;
+    }
+
+    /* Button positions */
+    #btn1 { top: 5%; left: 50%; }
+    #btn2 { top: 45%; left: 80%; }
+    #btn3 { top: 65%; left: 50%; }
+
+    header ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    header ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    /* ---- MODAL ---- */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width:100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
         justify-content: center;
         align-items: center;
+        z-index: 999;
     }
 
-    .button-box div {
-        font-size: 52px;
-        font-weight: 700;
-        color: rgba(0,0,0,0.20);
+    .modal-content {
+        position: relative;
+        background: black;
+        padding: 10px;
+        border-radius: 10px;
     }
 
-    /* --- RESPONSIVE --- */
-    @media(max-width: 700px) {
-        h1 {
-            font-size: 36px;
-        }
-        .text-block {
-            font-size: 22px;
-        }
-        .button-box div {
-            font-size: 40px;
-        }
+    .modal video {
+        width: 50vw;
+        max-width: 400px;
+        border-radius: 10px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        font-size: 32px;
+        color: white;
+        cursor: pointer;
     }
 </style>
+</head>
+
+<body>
 
 <div class="header-gradient"></div>
 
 <div class="container">
 
     <h1>¿Quién es MONA?</h1>
+    <h2>¡Presiona los círculos y descúbrelo!</h2>
 
     <div class="text-block">
-       <img src="./assets/img5.jpeg" alt="" width="600px">
+        <div class="img-wrapper">
+            <img src="./assets/img5.jpeg" alt="Imagen de MONA" width="600">
 
-    
-    <link
-      id="favicon"
-      rel="icon"
-      href=".
-assets/images/David_Bowie_logo_(Diamond_Dogs).svg.png"
-      type="image/x-icon"
-    />
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link
-      rel="stylesheet"
-      href="
-style.css"
-    />
-    <script src="popup.js" defer></script>
-  </head>
-
-  <body>
-    <header>
-      <ul>
-        <li><a href="index.html">↖ volver</a></li>
-      </ul>
-    </header>
-
-    <!--     VENTANA EMERGENTES SON DIVS QUE LUEGO SE MUESTRAN U OCULTAN CON JS (DISPLAY - HOJA DE ESTILOS DENTRO DE HTML. PROPIEDAD NONE)-->
-
-    <div class="infogeneral">
-      <h1>Ventanas emergentes/ PopUps(usando &lt;div&gt;&lt;/div&gt;)</h1>
-
-      <button id="boton-abrir">Abrir ventana emergente</button>
-
-      <div class="ventana-emergente">
-        <img
-          src="https://cdn.glitch.global/080d9786-9b36-4efb-a075-24be6b0573c9/MV5BNWQ4Yzg4N2ItZWVjMi00MWYzLWJmZmEtNzRlOGJiYzJlNGI1XkEyXkFqcGdeQXVyNjc5NjEzNA%40%40._V1_.jpg?v=1694657321611"
-        />
-
-        <button id="boton-cerrar">&times;</button>
-      </div>
+            <button class="img-button" id="btn1"></button>
+            <button class="img-button" id="btn2"></button>
+            <button class="img-button" id="btn3"></button>
+        </div>
     </div>
-    </div>
+
 
     <a href="3.html">
-    <button class="section-button" style="background-color: #945353;">
-      REGRESAR
-    </button>
- 
-</a>
+        <button class="section-button" style="background-color: #945353;">
+            REGRESAR
+        </button>
+    </a>
 
 </div>
 
+<!-- MODAL -->
+<div class="modal" id="videoModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <video id="videoPlayer" controls></video>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("videoModal");
+    const videoPlayer = document.getElementById("videoPlayer");
+    const closeBtn = document.getElementById("closeBtn");
+
+    // Button → Video mapping
+    const videos = {
+        btn1: "1.mp4",
+        btn2: "2.mp4",
+        btn3: "3.mp4"
+    };
+
+    // Open modal
+    document.querySelectorAll(".img-button").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const src = videos[btn.id];
+            videoPlayer.src = src;
+            modal.style.display = "flex";
+            videoPlayer.play();
+        });
+    });
+
+    // Close modal
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+        videoPlayer.pause();
+        videoPlayer.src = "";
+    };
+
+    // Close by clicking outside
+    modal.onclick = (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            videoPlayer.pause();
+            videoPlayer.src = "";
+        }
+    };
+</script>
+
+</body>
+</html>
